@@ -28,17 +28,20 @@ class ResultsController extends Controller
             $selection = $_POST['selection'];
             array_splice($data['results'], $selection, 1);
 
-            if(count($data['results']) == 0){
-                
+            if(count($data['results']) == 0 && !array_key_exists('next_page_token', $data)){
                 unset($_POST['data']);
                 return view('results', [
                     'resultsBool' => false,
                     'content' => 'You have looked through all the results! Why don\'t you be less picky next time?'
                 ]);
+            } else if(count($data['results']) == 0 && array_key_exists('next_page_token', $data)){
+                $apiLink = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyDL2PSZaOLv96XKHrWuENmPT8kwnn8vLRM&pagetoken=".$data['next_page_token'];
+                $data = json_decode(file_get_contents($apiLink), true);
+                $_POST['data'] = $data;
             }
         }
         
-        if(count($data['results']) == 0){
+        if($data['status'] == 'ZERO_RESULTS'){
             
             unset($_POST['data']);
             return view('results', [
@@ -49,10 +52,12 @@ class ResultsController extends Controller
         } else {
             $selection = rand(0, count($data['results']) -1);
             
-            if($data['results'][$selection]['opening_hours']['open_now'] == 1){
-                $open = "Yes";
-            } else if($data['results'][$selection]['opening_hours']['open_now'] == 0){
-                $open = "No";
+            if(array_key_exists('opening_hours', $data['results'][$selection])){
+                if($data['results'][$selection]['opening_hours']['open_now'] == 1){
+                    $open = "Yes";
+                } else if($data['results'][$selection]['opening_hours']['open_now'] == 0){
+                    $open = "No";
+                }
             } else {
                 $open = "No posted hours";
             }
