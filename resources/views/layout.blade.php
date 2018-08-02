@@ -19,7 +19,7 @@
 		<div class="jumbotron">
 			<h1>What THE FUCK Do You Want To Eat?</h1>
 			<br>
-			<a href="/LaravelWhatDoYouWantToEat/public" class='btn btn-info' role='button'>Home</a>
+			<a href="/OtherStuff/LaravelWDYWTE/public" class='btn btn-info' role='button'>Home</a>
 			<br>
 		</div>
 		

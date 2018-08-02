@@ -4,7 +4,7 @@
 
 @if (!$resultsBool)
     <p>{{ $content }}</p>
-    <form action='/LaravelWhatDoYouWantToEat/public' method='get' enctype='multipart/form-data'>
+    <form action='/OtherStuff/LaravelWDYWTE/public' method='get' enctype='multipart/form-data'>
     	<br>
         <input name='submit' type='submit' value='Try another search!' >
     </form>
@@ -42,7 +42,7 @@
     	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL2PSZaOLv96XKHrWuENmPT8kwnn8vLRM&callback=initMap">
     </script>
     
-    <form action='/LaravelWhatDoYouWantToEat/public/results' method='post' enctype='multipart/form-data'>
+    <form action='/OtherStuff/LaravelWDYWTE/public/results' method='post' enctype='multipart/form-data'>
     	@csrf
     	<input type='hidden' name='currentCoords' id='currentCoords' value='{{ $currentCoords }}' >
     	<input type='hidden' name='keyword' id='keyword' value='{{ $keyword }}' >

@@ -48,7 +48,7 @@
 
 <br>
 
-<form action='/LaravelWhatDoYouWantToEat/public/results' method='post' enctype='multipart/form-data'>
+<form action='/OtherStuff/LaravelWDYWTE/public/results' method='post' enctype='multipart/form-data'>
 	@csrf
 	<div class='row'>
 		<div class='col-sm-4'>
