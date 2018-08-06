@@ -13,6 +13,7 @@ class ResultsController extends Controller
         $coords = explode(",", $_POST['currentCoords']);
         
         $keyword = $_POST['keyword'];
+		$keyword = str_replace(' ','',$keyword);
         $meters = (int)$_POST['distance'] * 1610;
         
         if($meters == 0){
@@ -21,7 +22,18 @@ class ResultsController extends Controller
         
         if(!isset($_POST['data'])){
             $apiLink = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$coords[0].",".$coords[1]."&radius=".$meters."&type=restaurant&keyword=".$keyword."&key=AIzaSyDL2PSZaOLv96XKHrWuENmPT8kwnn8vLRM";
-            $data = json_decode(file_get_contents($apiLink), true);
+			
+            try{
+				file_get_contents($apiLink);
+			} 
+			catch(\Exception $e) {
+				return view('results', [
+					'resultsBool' => false,
+					'content' => 'Sorry, no results found!'
+				]);
+			}
+			
+			$data = json_decode(file_get_contents($apiLink), true);
             $_POST['data'] = $data;
         } else {
             $data = unserialize(base64_decode($_POST['data']));
