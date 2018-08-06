@@ -24,7 +24,7 @@ class ResultsController extends Controller
             $apiLink = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$coords[0].",".$coords[1]."&radius=".$meters."&type=restaurant&keyword=".$keyword."&key=AIzaSyDL2PSZaOLv96XKHrWuENmPT8kwnn8vLRM";
 			
             try{
-				file_get_contents($apiLink);
+				$data = json_decode(file_get_contents($apiLink), true);
 			} 
 			catch(\Exception $e) {
 				return view('results', [
@@ -33,7 +33,6 @@ class ResultsController extends Controller
 				]);
 			}
 			
-			$data = json_decode(file_get_contents($apiLink), true);
             $_POST['data'] = $data;
         } else {
             $data = unserialize(base64_decode($_POST['data']));
