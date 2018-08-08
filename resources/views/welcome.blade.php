@@ -58,7 +58,7 @@
         		<input type='text' name='keyword' id='keyword'><br><br>
         		<label for='distance'>Miles willing to travel (Not Required):</label><br>
         		<input type='number' name='distance' id='distance'><br><br>
-        		<input name='submit' type='submit' value="I Don't FUCKING Know">
+        		<input name='submit' type='submit' value="I Don't Know">
         	</div>
         </div>
 	</div>

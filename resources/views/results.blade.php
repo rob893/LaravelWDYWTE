@@ -50,7 +50,7 @@
     	<input type='hidden' name='data' id='data' value='{{ $data }}' >
     	<input type='hidden' name='selection' id='selection' value='{{ $selection }}' >
     	<br>
-        <input name='submit' type='submit' value="No, that place sucks ass!">
+        <input name='submit' type='submit' value="No, that place is awful!">
     </form>
 @endif
 @endsection
