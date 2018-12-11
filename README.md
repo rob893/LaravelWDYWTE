@@ -1,2 +1,2 @@
 # LaravelWDYWTE
-Deployed here: https://ksucsprojects.com/OtherStuff/LaravelWDYWTE/public/
+Deployed here: https://rwherber.com/OtherStuff/LaravelWDYWTE/public/
